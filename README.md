@@ -1,2 +1,2 @@
-# lotus
-distributed job scheduler platform for bigdata
+# Lotus
+分布式作业调度平台
