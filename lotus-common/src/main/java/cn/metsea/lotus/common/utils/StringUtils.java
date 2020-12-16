@@ -1,5 +1,8 @@
 package cn.metsea.lotus.common.utils;
 
+/**
+ * String Utils
+ */
 public class StringUtils {
 
     public static final String EMPTY = "";
