@@ -30,7 +30,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * json utils
+ * JSON Utils
  */
 public class JsonUtils {
 
@@ -81,12 +81,9 @@ public class JsonUtils {
     }
 
     /**
-     * This method deserializes the specified Json into an object of the specified class. It is not
-     * suitable to use if the specified class is a generic type since it will not have the generic
-     * type information because of the Type Erasure feature of Java. Therefore, this method should
-     * not be used if the desired type is a generic type. Note that this method works fine if the
-     * any of the fields of the specified object are generics, just the object itself should not be
-     * a generic type.
+     * This method deserializes the specified Json into an object of the specified class. It is not suitable to use if the specified class is a generic type since it will not have
+     * the generic type information because of the Type Erasure feature of Java. Therefore, this method should not be used if the desired type is a generic type. Note that this
+     * method works fine if the any of the fields of the specified object are generics, just the object itself should not be a generic type.
      *
      * @param json  the string from which the object is to be deserialized
      * @param clazz the class of T
@@ -154,9 +151,8 @@ public class JsonUtils {
     }
 
     /**
-     * Method for finding a JSON Object field with specified name in this node or its child nodes,
-     * and returning value it has. If no matching field is found in this node or its descendants,
-     * returns null.
+     * Method for finding a JSON Object field with specified name in this node or its child nodes, and returning value it has. If no matching field is found in this node or its
+     * descendants, returns null.
      *
      * @param jsonNode  json node
      * @param fieldName Name of field to look for
