@@ -25,7 +25,7 @@
             <package name="" withSubpackages="true" static="false"/>
         </value>
     </option>
-    <option name="RIGHT_MARGIN" value="100"/>
+    <option name="RIGHT_MARGIN" value="180"/>
     <option name="JD_ALIGN_PARAM_COMMENTS" value="false"/>
     <option name="JD_ALIGN_EXCEPTION_COMMENTS" value="false"/>
     <option name="JD_P_AT_EMPTY_LINES" value="false"/>
@@ -110,6 +110,7 @@
         </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="JAVA">
+        <option name="RIGHT_MARGIN" value="180"/>
         <option name="KEEP_CONTROL_STATEMENT_IN_ONE_LINE" value="false"/>
         <option name="KEEP_BLANK_LINES_IN_CODE" value="1"/>
         <option name="BLANK_LINES_AFTER_CLASS_HEADER" value="1"/>
@@ -146,7 +147,7 @@
         </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="JavaScript">
-        <option name="RIGHT_MARGIN" value="80"/>
+        <option name="RIGHT_MARGIN" value="180"/>
         <option name="KEEP_BLANK_LINES_IN_CODE" value="1"/>
         <option name="ALIGN_MULTILINE_PARAMETERS" value="false"/>
         <option name="ALIGN_MULTILINE_FOR" value="false"/>
@@ -169,7 +170,7 @@
         </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="PROTO">
-        <option name="RIGHT_MARGIN" value="80"/>
+        <option name="RIGHT_MARGIN" value="180"/>
         <indentOptions>
             <option name="INDENT_SIZE" value="4"/>
             <option name="CONTINUATION_INDENT_SIZE" value="2"/>
@@ -177,7 +178,7 @@
         </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="protobuf">
-        <option name="RIGHT_MARGIN" value="80"/>
+        <option name="RIGHT_MARGIN" value="180"/>
         <indentOptions>
             <option name="INDENT_SIZE" value="4"/>
             <option name="CONTINUATION_INDENT_SIZE" value="2"/>
@@ -186,7 +187,7 @@
     </codeStyleSettings>
     <codeStyleSettings language="Python">
         <option name="KEEP_BLANK_LINES_IN_CODE" value="1"/>
-        <option name="RIGHT_MARGIN" value="80"/>
+        <option name="RIGHT_MARGIN" value="180"/>
         <option name="ALIGN_MULTILINE_PARAMETERS" value="false"/>
         <option name="PARENT_SETTINGS_INSTALLED" value="true"/>
         <indentOptions>
@@ -601,7 +602,7 @@
         </extensions>
     </Objective-C-extensions>
     <codeStyleSettings language="ObjectiveC">
-        <option name="RIGHT_MARGIN" value="80"/>
+        <option name="RIGHT_MARGIN" value="180"/>
         <option name="KEEP_BLANK_LINES_BEFORE_RBRACE" value="1"/>
         <option name="BLANK_LINES_BEFORE_IMPORTS" value="0"/>
         <option name="BLANK_LINES_AFTER_IMPORTS" value="0"/>
