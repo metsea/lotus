@@ -18,8 +18,8 @@ import org.springframework.stereotype.Component;
 /**
  * Worker Registry
  */
-@Component
 @Slf4j
+@Component
 public class WorkerRegistry {
 
     @Autowired
@@ -32,37 +32,26 @@ public class WorkerRegistry {
 
     private ScheduledExecutorService heartbeatExecutor;
 
-    private String workerIp;
-
-    /**
-     * worker port
-     */
-    private int workerPort;
-
     @PostConstruct
     public void init() {
         this.startTime = DateUtils.dateToString(new Date());
-        this.heartbeatExecutor = new ScheduledThreadPoolExecutor(1,
-            new NamedThreadFactory("WorkerHeartbeat", 1));
-        workerIp = this.workerConfig.getListenIp();
-        workerPort = this.workerConfig.getListenPort();
+        this.heartbeatExecutor = new ScheduledThreadPoolExecutor(1, new NamedThreadFactory("Heartbeat", 1));
     }
 
     public void registry() {
         // worker registry
-        String address = workerIp + ":" + workerIp;
+        String address = buildWorkerAddress();
         String workerRegistryPath = buildWorkerRegistryPath();
         this.zookeeperRegistryCenter.getZookeeperCachedOperator().upsertEphemeral(workerRegistryPath, "", true);
-        this.zookeeperRegistryCenter.getZookeeperCachedOperator()
-            .addListener((client, newState) -> {
-                if (newState == ConnectionState.LOST) {
-                    log.error("worker : {} connection LOST from zookeeper", address);
-                } else if (newState == ConnectionState.RECONNECTED) {
-                    log.info("worker : {} connection RECONNECTED to zookeeper", address);
-                } else if (newState == ConnectionState.SUSPENDED) {
-                    log.warn("worker : {} connection SUSPENDED from zookeeper", address);
-                }
-            });
+        this.zookeeperRegistryCenter.getZookeeperCachedOperator().addListener((client, newState) -> {
+            if (newState == ConnectionState.LOST) {
+                log.error("worker : {} connection LOST from zookeeper", address);
+            } else if (newState == ConnectionState.RECONNECTED) {
+                log.info("worker : {} connection RECONNECTED to zookeeper", address);
+            } else if (newState == ConnectionState.SUSPENDED) {
+                log.warn("worker : {} connection SUSPENDED from zookeeper", address);
+            }
+        });
 
         // worker heartbeat
         int heartbeatInterval = this.workerConfig.getHeartbeatInterval();
@@ -74,6 +63,10 @@ public class WorkerRegistry {
     }
 
     private String buildWorkerRegistryPath() {
-        return this.zookeeperRegistryCenter.getWorkerPath() + "/" + workerIp + ":" + workerPort;
+        return this.zookeeperRegistryCenter.getWorkerPath() + "/" + this.workerConfig.getListenIp() + ":" + this.workerConfig.getListenPort();
+    }
+
+    private String buildWorkerAddress() {
+        return this.workerConfig.getListenIp() + ":" + this.workerConfig.getListenPort();
     }
 }
