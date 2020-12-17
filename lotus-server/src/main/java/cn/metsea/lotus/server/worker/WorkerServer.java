@@ -1,15 +1,19 @@
 package cn.metsea.lotus.server.worker;
 
 import cn.metsea.lotus.server.master.MasterServer;
+import cn.metsea.lotus.server.worker.registry.WorkerRegistry;
 import javax.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 
 /**
- * worker server
+ * Worker Server
  */
+@Slf4j
 @ComponentScan(
     basePackages = "cn.metsea.lotus",
     excludeFilters = {
@@ -18,6 +22,9 @@ import org.springframework.context.annotation.FilterType;
 )
 public class WorkerServer {
 
+    @Autowired
+    private WorkerRegistry workerRegistry;
+
     public static void main(String[] args) {
         Thread.currentThread().setName("WorkerServer");
         new SpringApplicationBuilder(WorkerServer.class).web(WebApplicationType.NONE).run(args);
@@ -25,7 +32,9 @@ public class WorkerServer {
 
     @PostConstruct
     public void run() {
-        // TDO
+        // registry
+        log.info("start worker server ...");
+        this.workerRegistry.registry();
     }
 
 }

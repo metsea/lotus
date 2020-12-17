@@ -53,6 +53,7 @@ public class ZookeeperRegistryCenter implements InitializingBean {
     /**
      * worker path
      */
+    @Getter
     private String workerPath;
 
     @Override
