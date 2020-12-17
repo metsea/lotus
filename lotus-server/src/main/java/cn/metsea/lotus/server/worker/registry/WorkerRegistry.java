@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * Master Registry
+ * Worker Registry
  */
 @Component
 @Slf4j

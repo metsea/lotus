@@ -14,7 +14,7 @@
     </appender>
     
     <!-- worker server logback config start -->
-    <appender name="MASTER_LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="WORKER_LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${log.path}/lotus-worker.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>${log.path}/lotus-worker.%d{yyyy-MM-dd_HH}.%i.log
@@ -33,7 +33,7 @@
     
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="MASTER_LOG_FILE"/>
+        <appender-ref ref="WORKER_LOG_FILE"/>
     </root>
 
 </configuration>

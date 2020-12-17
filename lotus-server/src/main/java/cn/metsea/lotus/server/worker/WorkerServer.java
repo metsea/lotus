@@ -1,6 +1,5 @@
 package cn.metsea.lotus.server.worker;
 
-import cn.metsea.lotus.server.master.MasterServer;
 import cn.metsea.lotus.server.worker.registry.WorkerRegistry;
 import javax.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +15,7 @@ import org.springframework.context.annotation.FilterType;
 @ComponentScan(
     basePackages = "cn.metsea.lotus",
     excludeFilters = {
-        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {MasterServer.class})
+        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {WorkerServer.class})
     }
 )
 @Slf4j
