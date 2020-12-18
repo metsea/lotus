@@ -31,10 +31,12 @@ public class WorkerServer {
     }
 
     @PostConstruct
-    public void run() {
+    public void run() throws InterruptedException {
         // registry
         log.info("start worker server ...");
         this.workerRegistry.registry();
+
+        Thread.sleep(1000 * 600);
     }
 
 }

@@ -1,6 +1,7 @@
 package cn.metsea.lotus.server.master;
 
 import cn.metsea.lotus.server.master.registry.MasterRegistry;
+import cn.metsea.lotus.server.master.tolerant.MasterTolerant;
 import cn.metsea.lotus.server.worker.WorkerServer;
 import javax.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +26,9 @@ public class MasterServer {
     @Autowired
     private MasterRegistry masterRegistry;
 
+    @Autowired
+    private MasterTolerant masterTolerant;
+
     public static void main(String[] args) {
         Thread.currentThread().setName("MasterServer");
         new SpringApplicationBuilder(MasterServer.class).web(WebApplicationType.NONE).run(args);
@@ -34,5 +38,10 @@ public class MasterServer {
     public void run() throws InterruptedException {
         // registry
         this.masterRegistry.registry();
+
+        // tolerant
+        this.masterTolerant.start();
+
+        Thread.sleep(1000 * 600);
     }
 }

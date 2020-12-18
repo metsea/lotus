@@ -3,6 +3,7 @@ package cn.metsea.lotus.service.zookeeper.opeartor;
 import cn.metsea.lotus.service.zookeeper.client.ZookeeperClient;
 import cn.metsea.lotus.service.zookeeper.config.ZookeeperConfig;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.api.CreateBuilder;
@@ -99,6 +100,20 @@ public class ZookeeperOperator implements InitializingBean {
             deleteBuilder.deletingChildrenIfNeeded().forPath(path);
         } else {
             deleteBuilder.forPath(path);
+        }
+    }
+
+    public List<String> getChildrenList(final String path) {
+        List<String> values;
+        try {
+            values = this.getClient().getChildren().forPath(path);
+            return values;
+        } catch (InterruptedException ie) {
+            log.error("getChildrenKeys key : {} InterruptedException", path);
+            throw new IllegalStateException(ie);
+        } catch (Exception e) {
+            log.error("getChildrenKeys key : {}", path, e);
+            throw new RuntimeException(e);
         }
     }
 

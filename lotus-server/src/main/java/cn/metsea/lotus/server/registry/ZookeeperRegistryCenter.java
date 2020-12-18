@@ -17,6 +17,7 @@
 
 package cn.metsea.lotus.server.registry;
 
+import cn.metsea.lotus.common.constants.LotusConstants;
 import cn.metsea.lotus.service.zookeeper.config.ZookeeperConfig;
 import cn.metsea.lotus.service.zookeeper.opeartor.ZookeeperCachedOperator;
 import lombok.Getter;
@@ -40,11 +41,6 @@ public class ZookeeperRegistryCenter implements InitializingBean {
     private ZookeeperConfig zookeeperConfig;
 
     /**
-     * nodes namespace
-     */
-    private String nodesPath;
-
-    /**
      * master path
      */
     @Getter
@@ -56,11 +52,17 @@ public class ZookeeperRegistryCenter implements InitializingBean {
     @Getter
     private String workerPath;
 
+    /**
+     * dead path
+     */
+    @Getter
+    private String deadPath;
+
     @Override
     public void afterPropertiesSet() {
-        this.nodesPath = this.zookeeperConfig.getLotusRoot() + "/nodes";
-        this.masterPath = this.nodesPath + "/master";
-        this.workerPath = this.nodesPath + "/worker";
+        this.masterPath = this.zookeeperConfig.getLotusRoot() + LotusConstants.ZOOKEEPER_LOTUS_NODES_MASTER;
+        this.workerPath = this.zookeeperConfig.getLotusRoot() + LotusConstants.ZOOKEEPER_LOTUS_NODES_WORKER;
+        this.deadPath = this.zookeeperConfig.getLotusRoot() + LotusConstants.ZOOKEEPER_LOTUS_NODES_DEAD;
 
         init();
     }
@@ -78,6 +80,16 @@ public class ZookeeperRegistryCenter implements InitializingBean {
     private void initNodes() {
         this.zookeeperCachedOperator.upsertPersist(this.masterPath, EMPTY, true);
         this.zookeeperCachedOperator.upsertPersist(this.workerPath, EMPTY, true);
+        this.zookeeperCachedOperator.upsertPersist(this.deadPath, EMPTY, true);
     }
+
+    public String getFailoverMasterPath() {
+        return LotusConstants.ZOOKEEPER_LOTUS_LOCK_FAILOVER_MASTER;
+    }
+
+    public String getFailoverWorkerPath() {
+        return LotusConstants.ZOOKEEPER_LOTUS_LOCK_FAILOVER_WORKER;
+    }
+
 
 }

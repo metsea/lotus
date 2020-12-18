@@ -13,6 +13,13 @@
     <artifactId>lotus-service</artifactId>
 
     <dependencies>
+        <!-- project modules -->
+        <dependency>
+            <groupId>cn.metsea</groupId>
+            <artifactId>lotus-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!--spring boots modules-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
