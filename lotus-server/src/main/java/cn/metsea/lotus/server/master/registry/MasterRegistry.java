@@ -1,5 +1,6 @@
 package cn.metsea.lotus.server.master.registry;
 
+import cn.metsea.lotus.common.constants.CommonConstants;
 import cn.metsea.lotus.common.utils.DateUtils;
 import cn.metsea.lotus.common.utils.NamedThreadFactory;
 import cn.metsea.lotus.server.master.config.MasterConfig;
@@ -40,16 +41,16 @@ public class MasterRegistry {
 
     public void registry() {
         // master registry
-        String ip = this.masterConfig.getListenIp();
+        String address = buildMasterAddress();
         String masterRegistryPath = buildMasterRegistryPath();
         this.zookeeperRegistryCenter.getZookeeperCachedOperator().upsertEphemeral(masterRegistryPath, "", true);
         this.zookeeperRegistryCenter.getZookeeperCachedOperator().addListener((client, newState) -> {
             if (newState == ConnectionState.LOST) {
-                log.error("master : {} connection LOST from zookeeper", ip);
+                log.error("master : {} connection LOST from zookeeper", address);
             } else if (newState == ConnectionState.RECONNECTED) {
-                log.info("master : {} connection RECONNECTED to zookeeper", ip);
+                log.info("master : {} connection RECONNECTED to zookeeper", address);
             } else if (newState == ConnectionState.SUSPENDED) {
-                log.warn("master : {} connection SUSPENDED from zookeeper", ip);
+                log.warn("master : {} connection SUSPENDED from zookeeper", address);
             }
         });
 
@@ -59,11 +60,15 @@ public class MasterRegistry {
         this.heartbeatExecutor.scheduleAtFixedRate(heartbeatThread, 0, heartbeatInterval, TimeUnit.SECONDS);
 
         // master log
-        log.info("master server : {} registered to zookeeper path {} is successful with heartbeat interval : {}s", ip, masterRegistryPath, heartbeatInterval);
+        log.info("master server : {} registered to zookeeper path {} is successful with heartbeat interval : {}s", address, masterRegistryPath, heartbeatInterval);
+    }
+
+    private String buildMasterAddress() {
+        return this.masterConfig.getListenIp() + CommonConstants.COLON + this.masterConfig.getListenPort();
     }
 
     private String buildMasterRegistryPath() {
-        return this.zookeeperRegistryCenter.getMasterPath() + "/" + this.masterConfig.getListenIp();
+        return this.zookeeperRegistryCenter.getMasterPath() + CommonConstants.SINGLE_SLASH + this.buildMasterAddress();
     }
 
 }
