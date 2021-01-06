@@ -12,4 +12,30 @@
 
     <artifactId>lotus-remote</artifactId>
 
+    <dependencies>
+        <!-- project modules -->
+        <dependency>
+            <groupId>cn.metsea</groupId>
+            <artifactId>lotus-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- spring boots modules -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+
+        <!-- netty -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+        </dependency>
+
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
 </project>
