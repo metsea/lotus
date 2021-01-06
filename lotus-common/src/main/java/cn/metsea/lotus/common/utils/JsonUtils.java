@@ -7,6 +7,7 @@ import static com.fasterxml.jackson.databind.MapperFeature.REQUIRE_SETTERS_FOR_G
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
@@ -74,9 +75,21 @@ public class JsonUtils {
             ObjectWriter writer = objectMapper.writer(feature);
             return writer.writeValueAsString(object);
         } catch (Exception e) {
-            logger.error("object to json exception!", e);
+            logger.error("object to json exception", e);
         }
 
+        return null;
+    }
+
+    public static <T> T parseObject(byte[] jsonBytes, Class<T> clazz) {
+        if (jsonBytes == null || jsonBytes.length == 0) {
+            return null;
+        }
+        try {
+            return objectMapper.readValue(jsonBytes, clazz);
+        } catch (IOException e) {
+            logger.error("parse object exception", e);
+        }
         return null;
     }
 
@@ -98,7 +111,7 @@ public class JsonUtils {
         try {
             return objectMapper.readValue(json, clazz);
         } catch (Exception e) {
-            logger.error("parse object exception!", e);
+            logger.error("parse object exception", e);
         }
         return null;
     }
@@ -122,7 +135,7 @@ public class JsonUtils {
                 .constructCollectionType(ArrayList.class, clazz);
             return objectMapper.readValue(json, listType);
         } catch (Exception e) {
-            logger.error("parse list exception!", e);
+            logger.error("parse list exception", e);
         }
 
         return Collections.emptyList();
@@ -144,7 +157,7 @@ public class JsonUtils {
             objectMapper.readTree(json);
             return true;
         } catch (IOException e) {
-            logger.error("check json object valid exception!", e);
+            logger.error("check json object valid exception", e);
         }
 
         return false;
@@ -185,7 +198,7 @@ public class JsonUtils {
             return objectMapper.readValue(json, new TypeReference<Map<String, String>>() {
             });
         } catch (Exception e) {
-            logger.error("json to map exception!", e);
+            logger.error("json to map exception", e);
         }
 
         return null;
@@ -210,9 +223,21 @@ public class JsonUtils {
             return objectMapper.readValue(json, new TypeReference<Map<K, V>>() {
             });
         } catch (Exception e) {
-            logger.error("json to map exception!", e);
+            logger.error("json to map exception", e);
         }
 
+        return null;
+    }
+
+    public static byte[] toBytes(Object object) {
+        if (object == null) {
+            return null;
+        }
+        try {
+            return objectMapper.writeValueAsBytes(object);
+        } catch (JsonProcessingException e) {
+            logger.error("toBytes exception", e);
+        }
         return null;
     }
 

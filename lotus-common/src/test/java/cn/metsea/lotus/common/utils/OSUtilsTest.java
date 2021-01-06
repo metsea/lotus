@@ -10,7 +10,7 @@ public class OSUtilsTest {
         System.out.println("totalMemorySize : " + OsUtils.totalMemorySize());
         System.out.println("loadAverage : " + OsUtils.loadAverage());
         System.out.println("cpuUsage : " + OsUtils.cpuUsage());
-        System.out.println("processID : " + OsUtils.getProcessID());
+        System.out.println("processID : " + OsUtils.getProcessId());
     }
 
 }
