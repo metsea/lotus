@@ -31,7 +31,7 @@
         <java.version>1.8</java.version>
         <spring.boot.version>2.3.5.RELEASE</spring.boot.version>
         <jackson.version>2.12.0</jackson.version>
-        <netty.version>4.1.54.Final</netty.version>
+        <netty.version>4.1.56.Final</netty.version>
         <slf4j.version>1.7.30</slf4j.version>
         <logback.version>1.2.3</logback.version>
         <mysql.version>8.0.22</mysql.version>
@@ -131,6 +131,13 @@
                 <version>${mybatis-plus.version}</version>
             </dependency>
 
+            <!-- netty -->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+
             <!-- zookeeper -->
             <dependency>
                 <groupId>org.apache.zookeeper</groupId>
@@ -183,6 +190,7 @@
                 <version>${guava.version}</version>
             </dependency>
 
+            <!-- oshi -->
             <dependency>
                 <groupId>com.github.oshi</groupId>
                 <artifactId>oshi-core</artifactId>
