@@ -1,7 +1,6 @@
 package cn.metsea.lotus.common.utils;
 
 import java.lang.management.ManagementFactory;
-import java.lang.management.RuntimeMXBean;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import oshi.SystemInfo;
@@ -94,9 +93,16 @@ public class OsUtils {
      *
      * @return process id
      */
-    public static int getProcessID() {
-        RuntimeMXBean runtimeMXBean = ManagementFactory.getRuntimeMXBean();
-        return Integer.parseInt(runtimeMXBean.getName().split("@")[0]);
+    public static int getProcessId() {
+        return Integer.parseInt(ManagementFactory.getRuntimeMXBean().getName().split("@")[0]);
+    }
+
+    public static String getOsName() {
+        return System.getProperty("os.name");
+    }
+
+    public static int getAvailableProcessors() {
+        return Runtime.getRuntime().availableProcessors();
     }
 
 }

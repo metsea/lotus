@@ -30,7 +30,7 @@ public class HeartbeatThread extends Thread {
         metrics.put("availablePhysicalMemorySize", OsUtils.availablePhysicalMemorySize());
         metrics.put("loadAverage", OsUtils.loadAverage());
         metrics.put("cpuUsage", OsUtils.cpuUsage());
-        metrics.put("processID", OsUtils.getProcessID());
+        metrics.put("processId", OsUtils.getProcessId());
 
         // update metrics to zookeeper
         try {
