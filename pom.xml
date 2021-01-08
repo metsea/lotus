@@ -13,13 +13,14 @@
     <description>distributed job scheduler platform for big data industry</description>
 
     <modules>
-        <module>lotus-server</module>
+        <module>lotus-api</module>
         <module>lotus-common</module>
         <module>lotus-dao</module>
         <module>lotus-dist</module>
-        <module>lotus-api</module>
-        <module>lotus-service</module>
         <module>lotus-remote</module>
+        <module>lotus-schedule</module>
+        <module>lotus-server</module>
+        <module>lotus-service</module>
     </modules>
 
     <properties>
@@ -32,6 +33,7 @@
         <spring.boot.version>2.3.5.RELEASE</spring.boot.version>
         <jackson.version>2.12.0</jackson.version>
         <netty.version>4.1.56.Final</netty.version>
+        <quartz.version>2.3.2</quartz.version>
         <slf4j.version>1.7.30</slf4j.version>
         <logback.version>1.2.3</logback.version>
         <mysql.version>8.0.22</mysql.version>
@@ -136,6 +138,13 @@
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>
                 <version>${netty.version}</version>
+            </dependency>
+
+            <!-- quartz -->
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz</artifactId>
+                <version>${quartz.version}</version>
             </dependency>
 
             <!-- zookeeper -->

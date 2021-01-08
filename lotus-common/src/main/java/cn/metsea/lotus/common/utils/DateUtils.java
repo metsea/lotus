@@ -53,8 +53,30 @@ public class DateUtils {
      * @param date date
      * @return local datetime
      */
-    private static LocalDateTime date2LocalDateTime(Date date) {
+    public static LocalDateTime date2LocalDateTime(Date date) {
         return LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+    }
+
+    /**
+     * date string to date with format
+     *
+     * @param dateString date string
+     * @param format     format
+     * @return Date
+     */
+    public static Date parse(String dateString, String format) {
+        return Date.from(string2LocalDateTime(dateString, format).atZone(ZoneId.systemDefault()).toInstant());
+    }
+
+    /**
+     * date string to local datetime
+     *
+     * @param dateString date string
+     * @param format     format
+     * @return LocalDateTime
+     */
+    public static LocalDateTime string2LocalDateTime(String dateString, String format) {
+        return LocalDateTime.parse(dateString, DateTimeFormatter.ofPattern(format));
     }
 
 }
