@@ -6,13 +6,13 @@ import lombok.Getter;
 
 @Getter
 public enum JobInstanceStatusEnum {
-    WAITING_START(10, "waitingStart", false),
-    STARTING(20, "starting", false),
-    RUNNING(30, "running", false),
-    START_FAILED(40, "startFailed", true),
-    RUN_FAILED(50, "runFailed", true),
+    READY(10, "ready", false),
+    RUNNING(20, "running", false),
+    FAILED(30, "failed", true),
+    SUCCESS(40, "success", true),
+    STOPPING(50, "stopping", false),
     STOPPED(60, "stopped", true),
-    SUCCESS(70, "success", true),
+    TOLERANCE(70, "tolerance", false),
     UNKNOWN(-1, "unknown", false);
 
     @EnumValue
@@ -20,11 +20,11 @@ public enum JobInstanceStatusEnum {
     @JsonValue
     private String desc;
 
-    private boolean FinalState;
+    private boolean isFinal;
 
-    JobInstanceStatusEnum(Integer code, String desc, boolean finalState) {
+    JobInstanceStatusEnum(Integer code, String desc, boolean isFinal) {
         this.code = code;
         this.desc = desc;
-        FinalState = finalState;
+        this.isFinal = isFinal;
     }
 }
