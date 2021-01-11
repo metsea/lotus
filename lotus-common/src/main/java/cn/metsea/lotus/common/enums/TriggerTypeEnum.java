@@ -8,8 +8,8 @@ import lombok.Getter;
 @Getter
 public enum TriggerTypeEnum {
     CRON(10, "Cron"),
-    LINEAR_DEPENDENT(20, "Linear"),
-    MATRIX_DEPENDENT(30, "Matrix");
+    LINEAR(20, "Linear"),
+    MATRIX(30, "Matrix");
     @EnumValue
     private Integer code;
     @JsonValue
