@@ -7,9 +7,9 @@ import lombok.Getter;
 
 @Getter
 public enum TriggerTypeEnum {
-    SCHEDULE(10, "schedule"),
-    LINEAR_DEPENDENT(20, "linearDependent"),
-    MATRIX_DEPENDENT(30, "matrixDependent");
+    CRON(10, "Cron"),
+    LINEAR_DEPENDENT(20, "Linear"),
+    MATRIX_DEPENDENT(30, "Matrix");
     @EnumValue
     private Integer code;
     @JsonValue

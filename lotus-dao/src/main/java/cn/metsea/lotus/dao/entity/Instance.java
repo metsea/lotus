@@ -47,6 +47,11 @@ public class Instance implements Serializable {
     private JobInstanceStatusEnum status;
 
     /**
+     * Work Host
+     */
+    private String workHost;
+
+    /**
      * Application Id
      */
     private String appId;

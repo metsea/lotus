@@ -31,6 +31,11 @@ public class TriggerMatrixJobInst implements Serializable {
     private Integer jobId;
 
     /**
+     * Base Time
+     */
+    private Date baseTime;
+
+    /**
      * Name
      */
     private String name;

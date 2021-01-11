@@ -6,8 +6,8 @@ import lombok.Getter;
 
 @Getter
 public enum JobStatusEnum {
-    ONLINE(1, "online"),
-    OFFLINE(2, "offline");
+    ONLINE(1, "Online"),
+    OFFLINE(2, "Offline");
 
     @EnumValue
     private Integer code;
