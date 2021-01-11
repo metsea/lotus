@@ -28,37 +28,37 @@ public class TransactionMapperTest {
     private TransactionMapper transactioneMapper;
 
     @Test
-    public void TestInsert(){
+    public void TestInsert() {
         Transaction transaction = new Transaction();
 
         transaction.setDag("{\"edge\":[{\"source\":1,\"target\":3},{\"source\":2,\"target\":3}]}");
         transaction.setConfig("[{\"source\":1,\"target\":3},{\"source\":2,\"target\":3}]");
         int insert = transactioneMapper.insert(transaction);
-        Assert.assertEquals(insert,1);
+        Assert.assertEquals(insert, 1);
     }
 
     @Test
-    public void testUpdate(){
-        Transaction  transaction = new Transaction();
+    public void testUpdate() {
+        Transaction transaction = new Transaction();
         transaction.setId(2L);
         int updateById = transactioneMapper.updateById(transaction);
-        Assert.assertEquals(updateById,1);
+        Assert.assertEquals(updateById, 1);
     }
 
     @Test
-    public void testDelete(){
+    public void testDelete() {
         int deleteById = transactioneMapper.deleteById(2);
-        Assert.assertEquals(deleteById,1);
+        Assert.assertEquals(deleteById, 1);
     }
 
     @Test
-    public void testQuery(){
+    public void testQuery() {
         Transaction transaction = transactioneMapper.selectById(3);
         Assert.assertNotNull(transaction);
     }
 
     @Test
-    public void testQueryList(){
+    public void testQueryList() {
         Set set = new TreeSet<Integer>();
         set.add(2);
         set.add(3);
@@ -67,8 +67,8 @@ public class TransactionMapperTest {
     }
 
     @Test
-    public void testQueryPage(){
-        Page<Transaction> page = new Page(1,2);
+    public void testQueryPage() {
+        Page<Transaction> page = new Page(1, 2);
         QueryWrapper wrapper = new QueryWrapper<Transaction>();
         wrapper.orderByDesc("id");
         Page page1 = transactioneMapper.selectPage(page, wrapper);

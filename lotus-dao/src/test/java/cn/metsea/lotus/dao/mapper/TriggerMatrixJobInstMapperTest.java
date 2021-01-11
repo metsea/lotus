@@ -28,38 +28,38 @@ public class TriggerMatrixJobInstMapperTest {
     private TriggerMatrixJobInstMapper triggerMatrixJobInstMapper;
 
     @Test
-    public void TestInsert(){
+    public void TestInsert() {
         TriggerMatrixJobInst triggerMatrixJobInst = new TriggerMatrixJobInst();
         triggerMatrixJobInst.setJobId(1);
         triggerMatrixJobInst.setName("A1");
         triggerMatrixJobInst.setFireTime("02:00:00");
         int insert = triggerMatrixJobInstMapper.insert(triggerMatrixJobInst);
-        Assert.assertEquals(insert,1);
+        Assert.assertEquals(insert, 1);
     }
 
     @Test
-    public void testUpdate(){
-        TriggerMatrixJobInst  triggerMatrixJobInst = new TriggerMatrixJobInst();
+    public void testUpdate() {
+        TriggerMatrixJobInst triggerMatrixJobInst = new TriggerMatrixJobInst();
         triggerMatrixJobInst.setId(2);
         triggerMatrixJobInst.setFireTime("03:00:00");
         int updateById = triggerMatrixJobInstMapper.updateById(triggerMatrixJobInst);
-        Assert.assertEquals(updateById,1);
+        Assert.assertEquals(updateById, 1);
     }
 
     @Test
-    public void testDelete(){
+    public void testDelete() {
         int deleteById = triggerMatrixJobInstMapper.deleteById(2);
-        Assert.assertEquals(deleteById,1);
+        Assert.assertEquals(deleteById, 1);
     }
 
     @Test
-    public void testQuery(){
+    public void testQuery() {
         TriggerMatrixJobInst triggerMatrixJobInst = triggerMatrixJobInstMapper.selectById(3);
         Assert.assertNotNull(triggerMatrixJobInst);
     }
 
     @Test
-    public void testQueryList(){
+    public void testQueryList() {
         Set set = new TreeSet<Integer>();
         set.add(2);
         set.add(3);
@@ -68,8 +68,8 @@ public class TriggerMatrixJobInstMapperTest {
     }
 
     @Test
-    public void testQueryPage(){
-        Page<TriggerMatrixJobInst> page = new Page(1,2);
+    public void testQueryPage() {
+        Page<TriggerMatrixJobInst> page = new Page(1, 2);
         QueryWrapper wrapper = new QueryWrapper<TriggerMatrixJobInst>();
         wrapper.orderByDesc("id");
         Page page1 = triggerMatrixJobInstMapper.selectPage(page, wrapper);

@@ -1,19 +1,21 @@
 package cn.metsea.lotus.dao.entity;
+
 import cn.metsea.lotus.common.enums.TriggerTypeEnum;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.util.Date;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
 /**
  * Trigger
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName(value = "lotus_trigger",autoResultMap = true)
+@TableName(value = "lotus_trigger", autoResultMap = true)
 public class Trigger implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -27,8 +29,7 @@ public class Trigger implements Serializable {
     private Integer jobId;
 
     /**
-     * Type
-     * {@link TriggerTypeEnum}
+     * Type {@link TriggerTypeEnum}
      */
     private TriggerTypeEnum type;
 

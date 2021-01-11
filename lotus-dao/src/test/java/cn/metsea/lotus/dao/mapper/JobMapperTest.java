@@ -25,42 +25,43 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Rollback()
 public class JobMapperTest {
+
     @Autowired
     private JobMapper jobMapper;
 
     @Test
-    public void TestInsert(){
-        Job  job = new Job();
+    public void TestInsert() {
+        Job job = new Job();
         job.setName("jobName4");
         job.setDescription("Test add one job");
         job.setType(JobTypeEnum.HIVE);
         int insert = jobMapper.insert(job);
-        Assert.assertEquals(insert,1);
+        Assert.assertEquals(insert, 1);
     }
 
     @Test
-    public void testUpdate(){
-        Job  job = new Job();
+    public void testUpdate() {
+        Job job = new Job();
         job.setId(9);
         job.setStatus(JobStatusEnum.ONLINE);
         int updateById = jobMapper.updateById(job);
-        Assert.assertEquals(updateById,1);
+        Assert.assertEquals(updateById, 1);
     }
 
     @Test
-    public void testDelete(){
+    public void testDelete() {
         int deleteById = jobMapper.deleteById(9);
-        Assert.assertEquals(deleteById,1);
+        Assert.assertEquals(deleteById, 1);
     }
 
     @Test
-    public void testQuery(){
+    public void testQuery() {
         Job job = jobMapper.selectById(10);
         Assert.assertNotNull(job);
     }
 
     @Test
-    public void testQueryList(){
+    public void testQueryList() {
         Set set = new TreeSet<Integer>();
         set.add(10);
         set.add(12);
@@ -69,8 +70,8 @@ public class JobMapperTest {
     }
 
     @Test
-    public void testQueryPage(){
-        Page<Job> page = new Page(1,2);
+    public void testQueryPage() {
+        Page<Job> page = new Page(1, 2);
         QueryWrapper wrapper = new QueryWrapper<Job>();
         wrapper.orderByDesc("id");
         Page page1 = jobMapper.selectPage(page, wrapper);

@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Getter;
 
-
 @Getter
 public enum TriggerTypeEnum {
     SCHEDULE(10, "schedule"),

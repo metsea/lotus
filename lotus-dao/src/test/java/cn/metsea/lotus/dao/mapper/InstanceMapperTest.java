@@ -4,7 +4,6 @@ import cn.metsea.lotus.common.enums.JobInstanceStatusEnum;
 import cn.metsea.lotus.dao.entity.Instance;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -25,12 +24,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Rollback()
 public class InstanceMapperTest {
+
     @Autowired
     private InstanceMapper instanceMapper;
 
     @Test
-    public void TestInsert(){
-        Instance  instance = new Instance();
+    public void TestInsert() {
+        Instance instance = new Instance();
         instance.setJobId(10);
         StringBuilder config = new StringBuilder();
         config.append("{")
@@ -52,32 +52,32 @@ public class InstanceMapperTest {
         instance.setStatus(JobInstanceStatusEnum.UNKNOWN);
 
         int insert = instanceMapper.insert(instance);
-        Assert.assertEquals(insert,1);
+        Assert.assertEquals(insert, 1);
     }
 
     @Test
-    public void testUpdate(){
-        Instance  instance = new Instance();
+    public void testUpdate() {
+        Instance instance = new Instance();
         instance.setId(1L);
         instance.setStatus(JobInstanceStatusEnum.RUNNING);
         int updateById = instanceMapper.updateById(instance);
-        Assert.assertEquals(updateById,1);
+        Assert.assertEquals(updateById, 1);
     }
 
     @Test
-    public void testDelete(){
+    public void testDelete() {
         int deleteById = instanceMapper.deleteById(1L);
-        Assert.assertEquals(deleteById,1);
+        Assert.assertEquals(deleteById, 1);
     }
 
     @Test
-    public void testQuery(){
+    public void testQuery() {
         Instance instance = instanceMapper.selectById(4L);
         Assert.assertNotNull(instance);
     }
 
     @Test
-    public void testQueryList(){
+    public void testQueryList() {
         Set set = new TreeSet<Integer>();
         set.add(1);
         set.add(2);
@@ -86,8 +86,8 @@ public class InstanceMapperTest {
     }
 
     @Test
-    public void testQueryPage(){
-        Page<Instance> page = new Page(1,2);
+    public void testQueryPage() {
+        Page<Instance> page = new Page(1, 2);
         QueryWrapper wrapper = new QueryWrapper<Instance>();
         wrapper.orderByDesc("id");
         Page page1 = instanceMapper.selectPage(page, wrapper);

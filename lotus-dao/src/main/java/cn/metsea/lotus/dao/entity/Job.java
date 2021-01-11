@@ -1,20 +1,22 @@
 package cn.metsea.lotus.dao.entity;
+
 import cn.metsea.lotus.common.enums.JobStatusEnum;
 import cn.metsea.lotus.common.enums.JobTypeEnum;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.util.Date;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
 /**
  * Job
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName(value = "lotus_job",autoResultMap = true)
+@TableName(value = "lotus_job", autoResultMap = true)
 public class Job implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -33,14 +35,12 @@ public class Job implements Serializable {
     private String description;
 
     /**
-     * Type
-     * {@link JobTypeEnum}
+     * Type {@link JobTypeEnum}
      */
     private JobTypeEnum type;
 
     /**
-     * Online or Offline Status
-     * {@link JobStatusEnum}
+     * Online or Offline Status {@link JobStatusEnum}
      */
     private JobStatusEnum status;
 

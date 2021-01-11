@@ -1,19 +1,21 @@
 package cn.metsea.lotus.dao.entity;
+
 import cn.metsea.lotus.common.enums.JobInstanceStatusEnum;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.util.Date;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
 /**
  * Instance
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName(value = "lotus_instance",autoResultMap = true)
+@TableName(value = "lotus_instance", autoResultMap = true)
 public class Instance implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -35,13 +37,12 @@ public class Instance implements Serializable {
     private Long transactionId;
 
     /**
-     * FireTime
+     * Fire Time
      */
     private Date fireTime;
 
     /**
-     * Status
-     * {@link JobInstanceStatusEnum}
+     * Status {@link JobInstanceStatusEnum}
      */
     private JobInstanceStatusEnum status;
 

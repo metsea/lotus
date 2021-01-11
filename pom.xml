@@ -237,13 +237,6 @@
                 <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
-            <!--mybatis plus generator web-->
-            <dependency>
-                <groupId>com.github.davidfantasy</groupId>
-                <artifactId>mybatis-plus-generator-ui</artifactId>
-                <version>1.3.4</version>
-                <scope>test</scope>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 

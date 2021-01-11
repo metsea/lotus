@@ -1,19 +1,21 @@
 package cn.metsea.lotus.dao.entity;
+
 import cn.metsea.lotus.common.enums.TransactionStatusEnum;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.util.Date;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
 /**
  * Transaction
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName(value = "lotus_transaction",autoResultMap = true)
+@TableName(value = "lotus_transaction", autoResultMap = true)
 public class Transaction implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,13 +32,12 @@ public class Transaction implements Serializable {
     private String dag;
 
     /**
-     * config
+     * Config
      */
     private String config;
 
     /**
-     * Status
-     * {@link TransactionStatusEnum}
+     * Status {@link TransactionStatusEnum}
      */
     private TransactionStatusEnum status;
 

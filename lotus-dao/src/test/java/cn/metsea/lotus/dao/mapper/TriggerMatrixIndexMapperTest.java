@@ -28,37 +28,37 @@ public class TriggerMatrixIndexMapperTest {
     private TriggerMatrixIndexMapper triggerMatrixIndexMapper;
 
     @Test
-    public void TestInsert(){
+    public void TestInsert() {
         TriggerMatrixIndex triggerMatrixIndex = new TriggerMatrixIndex();
         triggerMatrixIndex.setJobId(1);
         triggerMatrixIndex.setName("A1");
         int insert = triggerMatrixIndexMapper.insert(triggerMatrixIndex);
-        Assert.assertEquals(insert,1);
+        Assert.assertEquals(insert, 1);
     }
 
     @Test
-    public void testUpdate(){
-        TriggerMatrixIndex  triggerMatrixIndex = new TriggerMatrixIndex();
+    public void testUpdate() {
+        TriggerMatrixIndex triggerMatrixIndex = new TriggerMatrixIndex();
         triggerMatrixIndex.setId(2);
         triggerMatrixIndex.setName("A2");
         int updateById = triggerMatrixIndexMapper.updateById(triggerMatrixIndex);
-        Assert.assertEquals(updateById,1);
+        Assert.assertEquals(updateById, 1);
     }
 
     @Test
-    public void testDelete(){
+    public void testDelete() {
         int deleteById = triggerMatrixIndexMapper.deleteById(2);
-        Assert.assertEquals(deleteById,1);
+        Assert.assertEquals(deleteById, 1);
     }
 
     @Test
-    public void testQuery(){
+    public void testQuery() {
         TriggerMatrixIndex triggerMatrixIndex = triggerMatrixIndexMapper.selectById(3);
         Assert.assertNotNull(triggerMatrixIndex);
     }
 
     @Test
-    public void testQueryList(){
+    public void testQueryList() {
         Set set = new TreeSet<Integer>();
         set.add(2);
         set.add(3);
@@ -67,8 +67,8 @@ public class TriggerMatrixIndexMapperTest {
     }
 
     @Test
-    public void testQueryPage(){
-        Page<TriggerMatrixIndex> page = new Page(1,2);
+    public void testQueryPage() {
+        Page<TriggerMatrixIndex> page = new Page(1, 2);
         QueryWrapper wrapper = new QueryWrapper<TriggerMatrixIndex>();
         wrapper.orderByDesc("id");
         Page page1 = triggerMatrixIndexMapper.selectPage(page, wrapper);

@@ -28,37 +28,37 @@ public class TriggerMatrixMapperTest {
     private TriggerMatrixMapper triggerMatrixMapper;
 
     @Test
-    public void TestInsert(){
+    public void TestInsert() {
         TriggerMatrix triggerMatrix = new TriggerMatrix();
         triggerMatrix.setTriggerId(10);
         triggerMatrix.setRule("{}");
         int insert = triggerMatrixMapper.insert(triggerMatrix);
-        Assert.assertEquals(insert,1);
+        Assert.assertEquals(insert, 1);
     }
 
     @Test
-    public void testUpdate(){
-        TriggerMatrix  triggerMatrix = new TriggerMatrix();
+    public void testUpdate() {
+        TriggerMatrix triggerMatrix = new TriggerMatrix();
         triggerMatrix.setId(2);
         triggerMatrix.setRule("{}");
         int updateById = triggerMatrixMapper.updateById(triggerMatrix);
-        Assert.assertEquals(updateById,1);
+        Assert.assertEquals(updateById, 1);
     }
 
     @Test
-    public void testDelete(){
+    public void testDelete() {
         int deleteById = triggerMatrixMapper.deleteById(2);
-        Assert.assertEquals(deleteById,1);
+        Assert.assertEquals(deleteById, 1);
     }
 
     @Test
-    public void testQuery(){
+    public void testQuery() {
         TriggerMatrix triggerMatrix = triggerMatrixMapper.selectById(3);
         Assert.assertNotNull(triggerMatrix);
     }
 
     @Test
-    public void testQueryList(){
+    public void testQueryList() {
         Set set = new TreeSet<Integer>();
         set.add(2);
         set.add(3);
@@ -67,8 +67,8 @@ public class TriggerMatrixMapperTest {
     }
 
     @Test
-    public void testQueryPage(){
-        Page<TriggerMatrix> page = new Page(1,2);
+    public void testQueryPage() {
+        Page<TriggerMatrix> page = new Page(1, 2);
         QueryWrapper wrapper = new QueryWrapper<TriggerMatrix>();
         wrapper.orderByDesc("id");
         Page page1 = triggerMatrixMapper.selectPage(page, wrapper);

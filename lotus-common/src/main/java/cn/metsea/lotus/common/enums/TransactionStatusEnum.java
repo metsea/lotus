@@ -7,9 +7,9 @@ import lombok.Getter;
 
 @Getter
 public enum TransactionStatusEnum {
-    RUNNING(10,"running"),
-    SUCCEED(20,"succeed"),
-    FAILED(30,"failed");
+    RUNNING(10, "running"),
+    SUCCEED(20, "succeed"),
+    FAILED(30, "failed");
 
     @EnumValue
     private Integer code;

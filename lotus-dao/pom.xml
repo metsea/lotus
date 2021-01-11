@@ -48,13 +48,6 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
-        <!--mybatis plus generator web-->
-        <dependency>
-            <groupId>com.github.davidfantasy</groupId>
-            <artifactId>mybatis-plus-generator-ui</artifactId>
-            <scope>test</scope>
-        </dependency>
-
         <!--junit-->
         <dependency>
             <groupId>junit</groupId>
