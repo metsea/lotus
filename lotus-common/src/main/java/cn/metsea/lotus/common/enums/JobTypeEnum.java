@@ -17,11 +17,11 @@ public enum JobTypeEnum {
     @EnumValue
     private Integer code;
     @JsonValue
-    private String desc;
+    private String label;
 
     @JsonCreator
-    JobTypeEnum(Integer code, String desc) {
+    JobTypeEnum(Integer code, String label) {
         this.code = code;
-        this.desc = desc;
+        this.label = label;
     }
 }

@@ -18,13 +18,13 @@ public enum JobInstanceStatusEnum {
     @EnumValue
     private Integer code;
     @JsonValue
-    private String desc;
+    private String label;
 
     private boolean isFinal;
 
-    JobInstanceStatusEnum(Integer code, String desc, boolean isFinal) {
+    JobInstanceStatusEnum(Integer code, String label, boolean isFinal) {
         this.code = code;
-        this.desc = desc;
+        this.label = label;
         this.isFinal = isFinal;
     }
 }

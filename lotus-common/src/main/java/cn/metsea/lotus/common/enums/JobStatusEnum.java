@@ -12,10 +12,10 @@ public enum JobStatusEnum {
     @EnumValue
     private Integer code;
     @JsonValue
-    private String desc;
+    private String label;
 
-    JobStatusEnum(Integer code, String desc) {
+    JobStatusEnum(Integer code, String label) {
         this.code = code;
-        this.desc = desc;
+        this.label = label;
     }
 }

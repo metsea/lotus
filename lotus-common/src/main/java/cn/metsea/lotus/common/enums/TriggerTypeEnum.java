@@ -13,11 +13,11 @@ public enum TriggerTypeEnum {
     @EnumValue
     private Integer code;
     @JsonValue
-    private String desc;
+    private String label;
 
     @JsonCreator
-    TriggerTypeEnum(Integer code, String desc) {
+    TriggerTypeEnum(Integer code, String label) {
         this.code = code;
-        this.desc = desc;
+        this.label = label;
     }
 }

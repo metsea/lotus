@@ -14,11 +14,11 @@ public enum TransactionStatusEnum {
     @EnumValue
     private Integer code;
     @JsonValue
-    private String desc;
+    private String label;
 
     @JsonCreator
-    TransactionStatusEnum(Integer code, String desc) {
+    TransactionStatusEnum(Integer code, String label) {
         this.code = code;
-        this.desc = desc;
+        this.label = label;
     }
 }
