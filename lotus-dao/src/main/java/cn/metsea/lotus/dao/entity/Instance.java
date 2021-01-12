@@ -75,7 +75,7 @@ public class Instance implements Serializable {
     /**
      * Application Ui
      */
-    private String ui;
+    private String appUi;
 
     /**
      * Start Time
@@ -84,10 +84,10 @@ public class Instance implements Serializable {
     private Date startTime;
 
     /**
-     * Stop Time
+     * End Time
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date stopTime;
+    private Date endTime;
 
     /**
      * Create Time
