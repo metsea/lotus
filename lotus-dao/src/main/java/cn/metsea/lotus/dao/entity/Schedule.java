@@ -2,7 +2,6 @@ package cn.metsea.lotus.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
@@ -10,12 +9,12 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Schedule Instance
+ * Schedule
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName(value = "lotus_schedule_instance", autoResultMap = true)
-public class ScheduleInstance implements Serializable {
+@TableName(value = "lotus_schedule", autoResultMap = true)
+public class Schedule implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -45,7 +44,6 @@ public class ScheduleInstance implements Serializable {
     /**
      * Logical Delete
      */
-    @TableLogic
     private Integer logicalDel;
 
 }

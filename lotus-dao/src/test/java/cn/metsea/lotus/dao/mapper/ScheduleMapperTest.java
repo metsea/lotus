@@ -1,6 +1,6 @@
 package cn.metsea.lotus.dao.mapper;
 
-import cn.metsea.lotus.dao.entity.ScheduleInstance;
+import cn.metsea.lotus.dao.entity.Schedule;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import java.util.Date;
@@ -17,45 +17,45 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Schedule Instance Mapper Test
+ * Schedule Mapper Test
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest()
 @Transactional
 @Rollback()
-public class ScheduleInstanceMapperTest {
+public class ScheduleMapperTest {
 
     @Autowired
-    private ScheduleInstanceMapper scheduleInstanceMapper;
+    private ScheduleMapper scheduleMapper;
 
     @Test
     public void TestInsert() {
-        ScheduleInstance scheduleInstance = new ScheduleInstance();
-        scheduleInstance.setJobId(10);
-        scheduleInstance.setFireTime(new Date());
-        int insert = scheduleInstanceMapper.insert(scheduleInstance);
+        Schedule schedule = new Schedule();
+        schedule.setJobId(10);
+        schedule.setFireTime(new Date());
+        int insert = scheduleMapper.insert(schedule);
         Assert.assertEquals(insert, 1);
     }
 
     @Test
     public void testUpdate() {
-        ScheduleInstance scheduleInstance = new ScheduleInstance();
-        scheduleInstance.setId(2L);
-        scheduleInstance.setFireTime(new Date());
-        int updateById = scheduleInstanceMapper.updateById(scheduleInstance);
+        Schedule schedule = new Schedule();
+        schedule.setId(2L);
+        schedule.setFireTime(new Date());
+        int updateById = scheduleMapper.updateById(schedule);
         Assert.assertEquals(updateById, 1);
     }
 
     @Test
     public void testDelete() {
-        int deleteById = scheduleInstanceMapper.deleteById(2);
+        int deleteById = scheduleMapper.deleteById(4);
         Assert.assertEquals(deleteById, 1);
     }
 
     @Test
     public void testQuery() {
-        ScheduleInstance scheduleInstance = scheduleInstanceMapper.selectById(3);
-        Assert.assertNotNull(scheduleInstance);
+        Schedule schedule = scheduleMapper.selectById(3);
+        Assert.assertNotNull(schedule);
     }
 
     @Test
@@ -63,17 +63,17 @@ public class ScheduleInstanceMapperTest {
         Set set = new TreeSet<Integer>();
         set.add(2);
         set.add(3);
-        List list = scheduleInstanceMapper.selectBatchIds(set);
+        List list = scheduleMapper.selectBatchIds(set);
         Assert.assertNotNull(list);
     }
 
     @Test
     public void testQueryPage() {
-        Page<ScheduleInstance> page = new Page(1, 2);
-        QueryWrapper wrapper = new QueryWrapper<ScheduleInstance>();
+        Page<Schedule> page = new Page(1, 2);
+        QueryWrapper wrapper = new QueryWrapper<Schedule>();
         wrapper.orderByDesc("id");
-        Page page1 = scheduleInstanceMapper.selectPage(page, wrapper);
-        List<ScheduleInstance> records = page1.getRecords();
+        Page page1 = scheduleMapper.selectPage(page, wrapper);
+        List<Schedule> records = page1.getRecords();
         Assert.assertNotNull(records);
     }
 }
