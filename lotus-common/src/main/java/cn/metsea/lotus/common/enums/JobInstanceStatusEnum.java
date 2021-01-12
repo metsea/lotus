@@ -9,7 +9,7 @@ public enum JobInstanceStatusEnum {
     READY(10, "Ready", false),
     RUNNING(20, "Running", false),
     FAILED(30, "Failed", true),
-    SUCCEED(40, "Succeed", true),
+    SUCCESS(40, "Success", true),
     STOPPING(50, "Stopping", false),
     STOPPED(60, "Stopped", true),
     TOLERANCE(70, "Tolerance", false),
